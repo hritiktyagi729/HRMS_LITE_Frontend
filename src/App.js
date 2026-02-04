@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import EmployeeList from './pages/EmployeeList';
+import AddEmployee from './pages/AddEmployee';
+import Attendance from './pages/Attendance';
+import ViewAttendance from './pages/ViewAttendance';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div className="container mt-4">
+        <Switch>
+          <Route path="/" exact component={EmployeeList} />
+          <Route path="/add" component={AddEmployee} />
+          <Route path="/attendance" component={Attendance} />
+          <Route path="/view-attendance" component={ViewAttendance} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
