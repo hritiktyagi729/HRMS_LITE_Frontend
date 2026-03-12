@@ -75,7 +75,8 @@ function Attendance() {
 
       {!loading && employees.length > 0 && (
       <form onSubmit={markAttendance}>
-        <div className="form-group mb-2">
+       
+        <div className="form-group mb-2 row g-2">
           <label>Employee Name</label>
           <select 
             className="form-control" 
@@ -117,7 +118,7 @@ function Attendance() {
             <option value="ABSENT">Absent</option>
           </select>
         </div>
-
+          
         <button className="btn btn-success">Submit</button>
       </form>
       )}

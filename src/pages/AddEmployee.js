@@ -32,6 +32,7 @@ function AddEmployee() {
       });
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
+      console.error('Error adding employee:', err);
       const errorMsg = err.response?.data?.detail || err.message || 'Failed to add employee';
       setError(errorMsg);
     }
@@ -39,12 +40,14 @@ function AddEmployee() {
 
   return (
     <div className="card p-4">
-      <h3>Add Employee</h3>
+      <h3 className="mb-3" >Add Employee</h3>
 
       {error && <p className="alert alert-danger">{error}</p>}
       {success && <p className="alert alert-success">{success}</p>}
 
       <form onSubmit={saveEmployee}>
+        <div className="row g-2">
+      <div className="col-12 col-md-6">
         <input 
           className="form-control mb-2" 
           name="fullName" 
@@ -53,6 +56,8 @@ function AddEmployee() {
           onChange={handleChange}
           required
         />
+        </div>
+        <div className="col-12 col-md-6">
         <input 
           className="form-control mb-2" 
           name="email" 
@@ -62,6 +67,8 @@ function AddEmployee() {
           onChange={handleChange}
           required
         />
+        </div>
+        <div className="col-12">
         <input 
           className="form-control mb-2" 
           name="department" 
@@ -70,8 +77,10 @@ function AddEmployee() {
           onChange={handleChange}
           required
         />
-
+        </div>
+      </div>
         <button className="btn btn-primary">Save</button>
+        
       </form>
     </div>
   );
